@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -137,6 +138,9 @@ public class SecurityConfig {
 		http.exceptionHandling()
 			//.authenticationEntryPoint(authenticationEntryPoint())	//인증 exception 처리 주석 시 기본 스프링 로그인
 			.accessDeniedHandler(accessDeniedHandler());			//인가 exception 처리
+		
+		//throlad local 저장 전략 처리
+		SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL); // 자식 thread 공유 전략
 
 		return http.build();
 	}
