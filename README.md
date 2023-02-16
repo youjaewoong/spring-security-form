@@ -17,10 +17,12 @@ InMemoryUser를 생성하여 role을 부여하여 인증/인가 테스트를 기
  - rememberMe
  - 인증/인가 예외처리
  - throlad local 저장 전략 처리
+```
+```
+throlad local 저장 전략 처리
    @Async를 사용한 서비스를 호출하는 경우
    쓰레드가 다르기 때문에 SecurityContext를 공유받지 못한다.
    SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
-
    SecurityContext를 자식 쓰레드에도 공유하는 전략.
-   @Async를 처리하는 쓰레드에서도 SecurityContext를 공유받을 수 있다.
+   @Async를 처리하는 쓰레드에서도 SecurityContext를 공유받을 수 있다
 ```
